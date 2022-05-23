@@ -23,16 +23,7 @@ SELECT
     'yfinance' AS source
     , date 
     , ticker
-    , 'dividends' AS action
-    , dividends AS value
-FROM daily_actions_cte
-WHERE rn = 1
-UNION ALL 
-SELECT 
-    'yfinance' AS source
-    , date 
-    , ticker
-    , 'stock_splits' AS action
-    , stock_splits AS value
+    , dividends
+    , stock_splits
 FROM daily_actions_cte
 WHERE rn = 1
