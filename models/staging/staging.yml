@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_yfinance_stocks_daily_actions
+    materialized: view
+    columns: 
+      - name: date
+        tests:
+          - not_null
+
+  - name: stg_yfinance_stocks_daily_prices
+    materialized: view
+    columns: 
+      - name: date
+        tests:
+          - not_null
+      
