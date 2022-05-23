@@ -1,7 +1,7 @@
 
 {{
     config(
-        materialized = "table",
+        materialized = "view",
         sort = "date"
     )
 }}
@@ -24,7 +24,8 @@ WITH daily_prices_cte AS (
 
 )
 SELECT 
-    date 
+    'yfinance' AS source
+    , date 
     , open
     , high
     , low
