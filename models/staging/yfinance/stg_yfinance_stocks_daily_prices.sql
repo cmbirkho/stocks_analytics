@@ -16,7 +16,6 @@ WITH daily_prices_cte AS (
         , high
         , low
         , close
-        , adj_close
         , volume
         , ticker
         , ROW_NUMBER() OVER(PARTITION BY ticker, date ORDER BY run_date DESC) AS rn 
@@ -30,7 +29,6 @@ SELECT
     , high
     , low
     , close
-    , adj_close
     , volume
     , ticker
 FROM daily_prices_cte
