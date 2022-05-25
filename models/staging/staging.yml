@@ -15,3 +15,11 @@ models:
         tests:
           - not_null
       
+
+sources:
+  - name: yfinance
+    database: silencio-351022
+    schema: stocks
+    tables:
+      - name: daily_prices
+      - name: daily_actions

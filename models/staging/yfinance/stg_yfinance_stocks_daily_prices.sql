@@ -19,7 +19,7 @@ WITH daily_prices_cte AS (
         , volume
         , ticker
         , ROW_NUMBER() OVER(PARTITION BY ticker, date ORDER BY run_date DESC) AS rn 
-    FROM stocks.daily_prices
+    FROM {{ source('yfinance', 'daily_prices') }}
 
 )
 SELECT 
