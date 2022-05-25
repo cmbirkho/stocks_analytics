@@ -22,4 +22,12 @@ sources:
     schema: stocks
     tables:
       - name: daily_prices
+        loaded_at_field: run_date
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
       - name: daily_actions
+        loaded_at_field: run_date
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
