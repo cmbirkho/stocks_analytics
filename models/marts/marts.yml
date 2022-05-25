@@ -4,8 +4,9 @@ models:
   - name: stocks_daily_actions
     materialized: table
     columns: 
-      - name: date
+      - name: id
         tests:
+          - unique
           - not_null
 
   - name: stocks_daily_prices
