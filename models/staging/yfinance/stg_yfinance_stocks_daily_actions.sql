@@ -16,7 +16,7 @@ WITH daily_actions_cte AS (
         , stock_splits
         , ticker
         , ROW_NUMBER() OVER(PARTITION BY ticker, date ORDER BY run_date DESC) AS rn 
-    FROM stocks.daily_actions
+    FROM {{ source('yfinance', 'daily_actions') }}
 
 )
 SELECT 
