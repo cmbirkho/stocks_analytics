@@ -7,6 +7,16 @@ models:
       - name: date
         tests:
           - not_null
+      - name: source
+        tests:
+          - accepted_values:
+              values:
+                - yfinance
+      - name: ticker
+        tests:
+          - relationships:
+              to: ref('stg_yfinance_stocks_daily_prices')
+              field: ticker
 
   - name: stg_yfinance_stocks_daily_prices
     materialized: view
@@ -14,6 +24,11 @@ models:
       - name: date
         tests:
           - not_null
+      - name: source
+        tests:
+          - accepted_values:
+              values:
+                - yfinance
       
 
 sources:
@@ -26,8 +41,18 @@ sources:
         freshness:
           warn_after: {count: 24, period: hour}
           error_after: {count: 48, period: hour}
+        columns:
+          - name: ticker
+            tests:
+              - not_null
+
       - name: daily_actions
         loaded_at_field: run_date
         freshness:
           warn_after: {count: 24, period: hour}
           error_after: {count: 48, period: hour}
+        columns:
+          - name: ticker
+            tests:
+              - not_null
+      
