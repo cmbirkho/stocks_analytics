@@ -28,9 +28,5 @@ SELECT
     date || '-' || ticker || '-' || action AS id
     , *
 FROM cte 
-{% if is_incremental() %}
-
-    WHERE date > (SELECT MAX(date) FROM {{ this }})
-
-{% endif %}
+{{ limit_data_in_dev('date', 1) }}
 

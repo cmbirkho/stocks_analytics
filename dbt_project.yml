@@ -34,5 +34,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   SilencioBruno:
     # Applies to all files under models/example/
-    example:
+    staging:
       materialized: view
+      +schema: stg
