@@ -37,3 +37,5 @@ models:
     staging:
       materialized: view
       +schema: stg
+    marts:
+      materialized: table
