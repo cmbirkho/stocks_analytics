@@ -22,4 +22,14 @@ models:
       - name: date
         tests:
           - not_null
+
+  - name: stocks_annual_earnings
+    materialized: table
+    columns:
+      - name: year
+        tests:
+          - not_null
+      - name: ticker
+        tests: 
+          - not_null
       
