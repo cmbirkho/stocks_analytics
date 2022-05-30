@@ -29,43 +29,14 @@ models:
           - accepted_values:
               values:
                 - yfinance
-      
 
-sources:
-  - name: yfinance
-    database: silencio-351022
-    schema: stocks
-    tables:
-      - name: daily_prices
-        loaded_at_field: run_date
-        freshness:
-          warn_after: {count: 24, period: hour}
-          error_after: {count: 48, period: hour}
-        columns:
-          - name: ticker
-            tests:
-              - not_null
-
-      - name: daily_actions
-        loaded_at_field: run_date
-        freshness:
-          warn_after: {count: 24, period: hour}
-          error_after: {count: 48, period: hour}
-        columns:
-          - name: ticker
-            tests:
-              - not_null
-      
-      - name: annual_earnings
-        loaded_at_field: run_date
-        freshness:
-          warn_after: {count: 24, period: hour}
-          error_after: {count: 48, period: hour}
-        columns:
-          - name: ticker
-            tests:
-              - not_null
-          - name: year
-            tests:
-              - not_null
+  - name: stg_yfinance_stocks_annual_earnings
+    materialized: view
+    columns:
+      - name: year
+        tests:
+          - not_null
+      - name: ticker
+        tests:
+          - not_null
       
