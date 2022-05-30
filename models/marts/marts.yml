@@ -32,4 +32,11 @@ models:
       - name: ticker
         tests: 
           - not_null
+
+  - name: dim_companies
+    materialized: table
+    columns:
+      - name: ticker
+        tests:
+          - not_null
       
